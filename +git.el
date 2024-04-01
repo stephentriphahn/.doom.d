@@ -40,7 +40,7 @@
 ;; Location of Git repositories
 ;; define paths and level of sub-directories to search
 (setq magit-repository-directories
-      '(("~/projects/" . 2)))
+      '(("~/development/" . 2)))
 
 
 ;; Number of topics displayed (issues, pull requests)
@@ -50,22 +50,5 @@
 ;; (setq  forge-topic-list-limit '(100 . 0))
 (setq  forge-topic-list-limit '(100 . -10))
 
-
-;; GitHub user and organization accounts owned
-;; used by @ c f  to create a fork
-(setq forge-owned-accounts
-      '(("practicalli" "practicalli-john"
-         "ClojureBridgeLondon" "ldnclj"
-         "clojure-hacks"
-         "reclojure")))
-
-
-;; Blacklist specific accounts, over-riding forge-owned-accounts
-;; (setq forge-owned-blacklist
-;;       '(("bad-hacks" "really-bad-hacks")))
-;;
-;;
-;;
-;;
 ;; End of Version Control configuration
 ;; ---------------------------------------

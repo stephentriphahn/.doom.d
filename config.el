@@ -97,7 +97,7 @@
 ;; Define a project path to discover projects using SPC Tab D
 ;; https://docs.projectile.mx/projectile/usage.html
 ;; (setq projectile-project-search-path '("~/projects/" "~/work/" ("~/github" . 1)))
-(setq projectile-project-search-path '(("~/development" . 1) ("~/.config" . 1)))
+(setq projectile-project-search-path '(("~/development" . 2)))
 
 ;; Disable projectile cache - saves requirement to invalidate cache when moving files
 ;; (setq projectile-enable-caching nil)

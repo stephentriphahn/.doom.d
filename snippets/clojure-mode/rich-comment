@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: rich-comment
+# uuid: rich-comment0
+# key: rich-comment
+# condition: t
+# --
+(comment
+  $0
+#_())

@@ -10,7 +10,7 @@
 
 (use-package! clojure-mode
   :config
-  (setq clojure-indent-style 'align-arguments
+  (setq clojure-indent-style 'always-indent
         clojure-align-forms-automatically t
         clojure-toplevel-inside-comment-form t  ;; evaluate expressions in comment as top level
         ))
@@ -22,12 +22,7 @@
   (setq cider-show-error-buffer t               ; show stacktrace buffer
         cider-print-fn 'puget                   ; pretty printing with sorted keys / set values
         cider-result-overlay-position 'at-point ; results shown right after expression
-        cider-overlays-use-font-lock t
-
-        ;; LSP features over Cider features
-        cider-font-lock-dynamically nil         ; use lsp semantic tokens
-        cider-eldoc-display-for-symbol-at-point nil ; use lsp
-        cider-use-xref nil                      ; cider xref to find definitions
+        cider-save-file-on-load t
 
         ;; minimise the repl buffer activity
         cider-repl-buffer-size-limit 100        ; limit lines shown in REPL buffer
@@ -40,22 +35,16 @@
         cider-repl-pop-to-buffer-on-connect nil ; REPL buffer shown at starup (nil does not show buffer)
         cider-repl-use-clojure-font-lock nil
         cider-repl-use-pretty-printing nil
-        )
-  (set-lookup-handlers! '(cider-mode cider-repl-mode) nil) ; use lsp
+        cider-font-lock-dynamically '(macro core function var))
   (set-popup-rule! "*cider-test-report*" :side 'right :width 0.4)
   (set-popup-rule! "^\\*cider-repl" :side 'bottom :quit nil)
-  ;; use lsp completion
-  (add-hook 'cider-mode-hook (lambda () (remove-hook 'completion-at-point-functions #'cider-complete-at-point))))
+  )
 
 
 
 ;; Kaocha test runner from Emacs
 ;; - provides rich test reports
-(use-package! kaocha-runner
-  :after cider
-  :config
-  ;; enable Kaocha test runner
-  (setq clojure-enable-kaocha-runner t))
+
 
 ;; End of Clojure
 ;; ---------------------------------------
@@ -120,7 +109,7 @@
       :map clojure-mode-map
       :localleader
       :desc "REPL session" "'" #'sesman-start
-
+      :desc "cider-jack-in" "j" #'cider-jack-in-clj
       ;; Debug Clojure
       (:prefix ("d" . "debug/inspect")
        :desc "debug" "d" #'cider-debug-defun-at-point
@@ -138,14 +127,13 @@
       ;; Evaluation
       (:prefix "e"
        :desc "Expression to comment" ";" #'cider-eval-defun-to-comment
-       ;; :desc "" "e$" #'spacemacs/cider-eval-sexp-end-of-line
        :desc "at point" "(" #'cider-eval-list-at-point
        :desc "buffer" "b" #'cider-eval-buffer
        "D" nil  ; Doom: send to repl
        :desc "prev expression" "e" #'cider-eval-last-sexp
        :desc "expresion" "f" #'cider-eval-defun-at-point
+       :desc "expresion" "F" #'cider-pprint-eval-defun-at-point
        :desc "interupt" "i" #'cider-interrupt
-       ;; :desc "" "el" #'spacemacs/cider-eval-sexp-end-of-line
        :desc "macroexpand" "m" #'cider-macroexpand-1
        :desc "macroexpand all" "M" #'cider-macroexpand-all
        :desc "region" "r" #'cider-eval-region
@@ -203,7 +191,7 @@
        :desc "Preceeding Expression" "e" #'cider-pprint-eval-last-sexp)
 
       ;; Refactor - Doom clj-refactor hydra menu
-      (:prefix-map ("R" . nil))
+      ;; (:prefix-map ("R" . nil))
 
       ;; REPL Sesison management
       (:prefix ("s" . "REPL Session")

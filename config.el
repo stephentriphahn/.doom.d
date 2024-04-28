@@ -79,9 +79,6 @@
 ;; Practicalli Configuration
 ;; Search https://discourse.doomemacs.org/ for example configuration
 
-;; Practicalli Logo on startup dashboard
-(setq fancy-splash-image "~/.config/doom/images/practicalli-logo-dark.svg")
-
 ;; Open Doom Emacs maximised
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
@@ -122,7 +119,7 @@
 (load! "+clojure")
 
 ;; LSP Configuration
-(load! "+lsp")
+;; (load! "+lsp")
 
 ;; Magit and Version Control
 (load! "+git")

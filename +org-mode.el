@@ -8,9 +8,9 @@
 (after! org
   (setq
    ;; Default location of org files
-   org-directory "~/projects/org/"
+   org-directory "~/org/"
    ;; Define the location of the file to hold tasks
-   org-default-notes-file "~/Documents/todo-list.org"
+   org-default-notes-file "~/org/todo-list.org"
 
    ;; Define stages for todo tasks
    org-todo-keywords '((sequence "TODO" "DOING" "BLOCKED" "REVIEW" "|" "DONE" "ARCHIVED"))
@@ -21,17 +21,17 @@
    ;; Make TODO states easier to distinguish by using different colours
    ;; Using X11 colour names from: https://en.wikipedia.org/wiki/Web_colors
    hl-todo-keyword-faces
-   '(("TODO" . "SlateGray")
-     ("DOING" . "DarkOrchid")
-     ("BLOCKED" . "Firebrick")
+   '(("TODO" . "Khaki")
+     ("DOING" . "Aquamarine")
+     ("BLOCKED" . "Salmon")
      ("REVIEW" . "Teal")
      ("DONE" . "ForestGreen")
      ("ARCHIVED" .  "SlateBlue"))
 
    org-todo-keyword-faces
-   '(("TODO" . "SlateGray")
-     ("DOING" . "DarkOrchid")
-     ("BLOCKED" . "Firebrick")
+   '(("TODO" . "Khaki")
+     ("DOING" . "Aquamarine")
+     ("BLOCKED" . "Salmon")
      ("REVIEW" . "Teal")
      ("DONE" . "ForestGreen")
      ("ARCHIVED" .  "SlateBlue"))
@@ -40,12 +40,12 @@
 
 ;; customize org-mode's checkboxes with unicode symbols
 (add-hook! org-mode
- (lambda ()
-   "Beautify Org Checkbox Symbol"
-   (push '("[ ]" . "☐") prettify-symbols-alist)
-   (push '("[X]" . "☑" ) prettify-symbols-alist)
-   (push '("[-]" . "❍" ) prettify-symbols-alist)
-   (prettify-symbols-mode)))
+  (lambda ()
+    "Beautify Org Checkbox Symbol"
+    (push '("[ ]" . "☐") prettify-symbols-alist)
+    (push '("[X]" . "☑" ) prettify-symbols-alist)
+    (push '("[-]" . "❍" ) prettify-symbols-alist)
+    (prettify-symbols-mode)))
 
 ;; End of Org-mode Configuration
 ;; ---------------------------------------

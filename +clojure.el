@@ -11,7 +11,7 @@
 (use-package! clojure-mode
   :config
   (setq clojure-indent-style 'always-indent
-        clojure-align-forms-automatically t
+        clojure-align-forms-automatically nil
         clojure-toplevel-inside-comment-form t  ;; evaluate expressions in comment as top level
         ))
 

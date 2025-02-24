@@ -31,6 +31,9 @@
       "SPC" nil
       :desc "M-x" "SPC" #'execute-extended-command)
 
+(map! :leader
+      :desc "yank from killring" "r" #'consult-yank-from-kill-ring)
+
 ;; Buffer customisations
 ;; (map! :leader
 ;;          "TAB" nil

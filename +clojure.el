@@ -24,8 +24,13 @@
         cider-result-overlay-position 'at-point ; results shown right after expression
         cider-save-file-on-load t
 
+        ;; LSP features over Cider features
+        cider-font-lock-dynamically nil         ; use lsp semantic tokens
+        cider-eldoc-display-for-symbol-at-point nil ; use lsp (almost exact same, but doesnt require REPL to work)
+        cider-use-xref nil                      ; cider xref to find definitions
+                                        ;
         ;; minimise the repl buffer activity
-        cider-repl-buffer-size-limit 100        ; limit lines shown in REPL buffer
+        cider-repl-buffer-size-limit 10000      ; limit lines shown in REPL buffer
         cider-repl-display-help-banner nil      ; disable help banner
         cider-repl-history-size 10              ; limit command history
         cider-repl-history-file nil             ; write repl buffer commands to file DOOMDIR/.local/cider-repl-history
@@ -36,15 +41,21 @@
         cider-repl-use-clojure-font-lock nil
         cider-repl-use-pretty-printing nil
         cider-font-lock-dynamically '(macro core function var))
+  (set-lookup-handlers! '(cider-mode cider-repl-mode) nil) ; use lsp
   (set-popup-rule! "*cider-test-report*" :side 'right :width 0.4)
-  (set-popup-rule! "^\\*cider-repl" :side 'bottom :quit nil)
+  (set-popup-rule! "^\\*cider-repl" :side 'right :quit nil :width 0.5)
+  (add-hook 'cider-mode-hook (lambda () (remove-hook 'completion-at-point-functions #'cider-complete-at-point)))
   )
 
 
 
 ;; Kaocha test runner from Emacs
 ;; - provides rich test reports
-
+(use-package! kaocha-runner
+  :after cider
+  :config
+  ;; enable Kaocha test runner
+  (setq clojure-enable-kaocha-runner t))
 
 ;; End of Clojure
 ;; ---------------------------------------

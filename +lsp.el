@@ -13,8 +13,7 @@
                                         ; lsp-headerline-breadcrumb-enable t  ; Breadcrumb trail
    lsp-headerline-breadcrumb-segments '(symbols) ; namespace & symbols, no file path
 
-   lsp-signature-render-documentation nil
-   lsp-signature-function 'lsp-signature-posframe
+   lsp-signature-render-documentation t
    lsp-semantic-tokens-enable t
    lsp-idle-delay 0.2 ;; Smoother LSP features response in cost of performance (Most servers I use have good performance)
    lsp-use-plists nil)

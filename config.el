@@ -105,10 +105,11 @@
 ;; Completion results order by history of use and then alphabetical
 ;; - does not work for autocomplete popups
 ;; (setq vertico-sort-function 'vertico-sort-history-alpha)
-
+(setq vterm-shell "/bin/zsh")
 ;; ---------------------------------------
 
-
+;; use cljstyle because I can't seem to get cljfmt to cooperate with my overrides
+(set-formatter! 'cljstyle "cljstyle pipe" :modes '(clojure-mode))
 ;; ---------------------------------------
 ;; Additional Configuration
 
@@ -119,7 +120,7 @@
 (load! "+clojure")
 
 ;; LSP Configuration
-;; (load! "+lsp")
+(load! "+lsp")
 
 ;; Magit and Version Control
 (load! "+git")

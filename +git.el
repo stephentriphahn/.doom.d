@@ -4,7 +4,7 @@
 ;; Version Control configuration
 
 ;; Load magit-todos
-(use-package! magit-todos)
+;;(use-package! magit-todos)
 
 ;; Location of developer tokens - default ~/.authinfo
 ;; Use XDG_CONFIG_HOME location or HOME
@@ -30,7 +30,7 @@
       magit-diff-refine-hunk 'all
 
       ;; Show project TODO lines in Magit Status
-      magit-todos-mode t
+      ;;magit-todos-mode t
 
       ;; Show Libravatar of commit author
       magit-revision-show-gravatars '("^Author:     " . "^Commit:     ")

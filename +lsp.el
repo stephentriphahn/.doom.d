@@ -31,7 +31,6 @@
   :config
   (setq lsp-ui-doc-enable nil       ;; disable all doc popups
         lsp-ui-sideline-enable nil  ;; disable sideline bar for less distraction
-        treemacs-space-between-root-nodes nil  ;; no spacing in treemacs views
         lsp-log-io t  ; Log client-server json communication
         lsp-ui-peek-enable t))
 

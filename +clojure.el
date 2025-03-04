@@ -121,6 +121,7 @@
       :localleader
       :desc "REPL session" "'" #'sesman-start
       :desc "cider-jack-in" "j" #'cider-jack-in-clj
+      :desc "cljr-menu" "R" #'hydra-cljr-help-menu/body
       ;; Debug Clojure
       (:prefix ("d" . "debug/inspect")
        :desc "debug" "d" #'cider-debug-defun-at-point
@@ -200,9 +201,6 @@
        :desc "Preceeding expresion comment" ":" #'cider-pprint-eval-last-sexp-to-comment
        :desc "Expression" "f" #'cider-pprint-eval-defun-at-point
        :desc "Preceeding Expression" "e" #'cider-pprint-eval-last-sexp)
-
-      ;; Refactor - Doom clj-refactor hydra menu
-      ;; (:prefix-map ("R" . nil))
 
       ;; REPL Sesison management
       (:prefix ("s" . "REPL Session")
